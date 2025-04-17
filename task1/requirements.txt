@@ -1,0 +1,8 @@
+torch
+ultralytics
+numpy
+opencv-python
+Pillow
+mtcnn
+tqdm
+argparse
