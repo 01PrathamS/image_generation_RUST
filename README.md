@@ -1,18 +1,23 @@
 # image_generation_RUST
 
-Image generation with Rust
+This project focuses on:
+
+- Efficient data processing using Rust
+- Training a generative model to synthesize human face images from embeddings
 
 ---
 
-## Task 1: Feature Extraction & Preprocessing
+### Task 1: Face Dataset Creation (Rust)
 
-To efficiently extract features, I handled several edge cases such as:
+> Goal: Write a Rust program that runs inference on a face detector and crops valid face images from a batch. Use the WIDER FACE dataset and handle edge cases effectively.
 
-- Confidence threshold (0.83)
-- Frontal face detection
-- Filtering blurry images
+While I faced technical issues integrating `opencv` and `torch-sys` crates (cargo could not build them correctly despite several clean builds), I implemented the core face processing logic using Python and focused heavily on the **edge case handling** as required by the task:
 
-**These preprocessing steps significantly improve the quality of generated images — up to 5× better than raw inputs.**
+- Confidence thresholding (set to 0.83)
+- Filtering out blurry images
+- Cropping only **frontal** and **single-face** images
+
+These decisions significantly improve the quality and usability of the dataset compared to using raw face detections.
 
 ### Examples:
 
@@ -24,7 +29,14 @@ To efficiently extract features, I handled several edge cases such as:
 
 ---
 
-## Task 2: Generative Modeling
+### Task 2: Generative Face Model (PyTorch)
+
+> Goal: Train a generative model that outputs 128×128 face images conditioned on embeddings.
+
+I experimented with multiple generative approaches:
+
+- **Variational Autoencoder (VAE)**: Successfully reconstructed face images and began exploring embedding conditioning.
+- **Diffusion Models (DDPM)**: Trained from scratch, but embedding conditioning was **not fully implemented** (can only sample without conditioned image embedding)
 
 ### VAE Results
 
@@ -46,7 +58,6 @@ To efficiently extract features, I handled several edge cases such as:
 
 ## Notebooks
 
- full experimental notebooks here:  
 [Experiment Notebooks](https://github.com/01PrathamS/image_generation_RUST/tree/main/notebooks)
 
 ---
@@ -57,3 +68,6 @@ To efficiently extract features, I handled several edge cases such as:
 2. [YOLO-Face GitHub Repo](https://github.com/akanametov/yolo-face)  
 3. [Diffusion Models - YouTube](https://www.youtube.com/watch?v=HoKDTa5jHvg)  
 4. [DDPM Paper (arXiv)](https://arxiv.org/abs/2006.11239)
+5. ...
+
+## Tring Tring... tring tring tring........
