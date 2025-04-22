@@ -144,8 +144,8 @@ def process_images(input_dir: str):
         )
         total_faces += count
 
-    print(f"\n✅ Total faces saved: {total_faces}")
-    print(f"📁 Saved in: {output_dir}")
+    print(f"\n Total faces saved: {total_faces}")
+    print(f" Saved in: {output_dir}")
     return output_dir
 
 
